@@ -42,7 +42,7 @@ if [ -f "$regions_file" ]; then
     # Process regions
     regions=$(process_regions "$regions_input")
     if [[ $regions != "invalid" ]]; then
-        echo "\nUsing regions: \n"
+        echo -e "\nUsing regions: \n"
         IFS=' ' # Set the Internal Field Separator to space for proper word splitting
         for region in $regions; do
             echo "$region"
