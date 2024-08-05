@@ -1,6 +1,9 @@
-# AWS Region Validator and Public IP Collector
+# AWS Public IP Checker
 
-This repository contains two Bash scripts designed to work with AWS services to validate regions and collect public IP addresses from various AWS resources.
+
+## Purpose
+
+The primary purpose of this project is to check for public IP addresses associated with instances in an AWS account.
 
 
 ## Scripts Overview
@@ -14,6 +17,7 @@ This repository contains two Bash scripts designed to work with AWS services to 
 
 - AWS CLI installed and configured with appropriate permissions.
 - Bash shell environment.
+- 'jq' tool for processing JSON.
 - A file named `regions.txt` in the same directory as the scripts, containing the AWS regions to be checked (one region per line or "all" to include all available regions).
 
 
@@ -21,7 +25,7 @@ This repository contains two Bash scripts designed to work with AWS services to 
 
 ### check-region.sh
 
-1. **Purpose**: Validate AWS regions specified in `regions.txt`.
+1. **Purpose**: Validates AWS regions specified in `regions.txt`.
 
 2. **Run the Script**:
     ```bash
@@ -46,6 +50,17 @@ This repository contains two Bash scripts designed to work with AWS services to 
 
 - **regions.txt**: A text file containing the list of AWS regions to be validated and checked.
 - **public-ips.txt**: A text file where unique public IP addresses are saved.
+
+
+## Resources Checked
+
+The `all-public-ips.sh` script collects public IP addresses from the following AWS resources:
+
+- **EC2 Instances**: Retrieves public IP addresses from EC2 instances.
+- **Elastic IPs**: Collects IPs associated with Elastic IP addresses.
+- **Load Balancers**: Resolves DNS names of Classic, Application, and Network Load Balancers to IP addresses.
+- **NAT Gateways**: Gathers public IP addresses for NAT Gateways.
+- **Network Interfaces (ENIs)**: Obtains public IP addresses associated with network interfaces.
 
 
 ## Example `regions.txt` File
